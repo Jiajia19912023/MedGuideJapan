@@ -116,7 +116,7 @@ const BRING_LABELS = {
 export default function HospitalizationPage() {
   const { lang } = useLang()
   const { isSaved, toggle } = useSaved()
-  const isBookmarked = isSaved(ITEM)
+  const isBookmarked = isSaved(ITEM.href)
 
   return (
     <main className="mj-container" style={{ paddingTop: 28, paddingBottom: 40 }}>

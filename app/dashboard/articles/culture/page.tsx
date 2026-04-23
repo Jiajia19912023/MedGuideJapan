@@ -190,7 +190,7 @@ const BOTTOM_LABEL = { EN: 'Bottom line: ', JP: 'まとめ：', ZH: '总结：',
 export default function CulturePage() {
   const { lang } = useLang()
   const { isSaved, toggle } = useSaved()
-  const saved = isSaved(ITEM)
+  const saved = isSaved(ITEM.href)
 
   return (
     <main className="mj-container" style={{ paddingTop: 28, paddingBottom: 40 }}>

@@ -308,7 +308,7 @@ const RESULTS_ID = [
   { title: 'Dukungan Bahasa Inggris dan Multibahasa', category: 'hospitals', href: '/dashboard/english-support', desc: 'Hotline gratis, layanan penerjemah, dan aplikasi multibahasa.' },
 ]
 
-function getResults(lang: string) {
+function getResults(lang: string): { title: string; category: string; href: string; desc: string; kw?: string }[] {
   switch (lang) {
     case 'JP': return RESULTS_JP
     case 'ZH': return RESULTS_ZH
