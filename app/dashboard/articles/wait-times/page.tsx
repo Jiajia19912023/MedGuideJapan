@@ -1,0 +1,156 @@
+'use client'
+import Link from 'next/link'
+import { useLang } from '../../lang-context'
+import { useSaved } from '../../saved-context'
+import { tr, COMMON, ARTICLES } from '../../translations'
+
+const ITEM = { href: '/dashboard/articles/wait-times', title: 'Why Wait Times Are Long in Japan', titleJP: '日本の待ち時間が長い理由', icon: 'schedule', color: '#7a5700' }
+
+function tl(m: Record<string,string>, l: string) { return m[l] ?? m['EN'] }
+
+const INTRO = { EN: "Japan has one of the world's best healthcare systems — but also some of the longest outpatient wait times. Here's why, and what you can do about it.", JP: '日本は世界最高水準の医療制度を誇りますが、外来の待ち時間も世界有数の長さです。その理由と対処法を解説します。', ZH: '日本拥有世界最佳医疗体系之一，但也有世界上最长的门诊等待时间。以下是原因及应对方法。', 'ZH-T': '日本擁有世界最佳醫療體系之一，但也有世界上最長的門診等待時間。以下是原因及應對方法。', KO: '일본은 세계 최고의 의료 시스템 중 하나를 자랑하지만, 외래 대기 시간도 세계에서 가장 깁니다. 그 이유와 대처법을 알아보겠습니다.', ES: 'Japón tiene uno de los mejores sistemas de salud del mundo — pero también algunos de los tiempos de espera ambulatorios más largos. Aquí está el porqué, y qué puede hacer.', FR: "Le Japon a l'un des meilleurs systèmes de santé au monde — mais aussi certains des temps d'attente ambulatoires les plus longs. Voici pourquoi, et ce que vous pouvez faire.", IT: "Il Giappone ha uno dei migliori sistemi sanitari al mondo — ma anche alcuni dei più lunghi tempi di attesa ambulatoriali. Ecco perché, e cosa puoi fare.", TL: 'Ang Japan ay may isa sa pinakamahusay na sistema ng pangangalagang pangkalusugan sa mundo — ngunit mayroon din itong ilan sa pinakamahabang oras ng paghihintay sa outpatient. Narito ang dahilan at kung ano ang magagawa mo.', ID: 'Jepang memiliki salah satu sistem layanan kesehatan terbaik di dunia — tetapi juga beberapa waktu tunggu rawat jalan yang paling lama. Inilah alasannya, dan apa yang bisa Anda lakukan.', DE: 'Japan hat eines der besten Gesundheitssysteme der Welt — aber auch einige der längsten ambulanten Wartezeiten. Hier ist der Grund, und was Sie dagegen tun können.', PT: 'O Japão tem um dos melhores sistemas de saúde do mundo — mas também alguns dos tempos de espera ambulatoriais mais longos. Aqui está o porquê, e o que você pode fazer.', RU: 'Япония обладает одной из лучших систем здравоохранения в мире — но и одними из самых длинных амбулаторных очередей. Вот почему, и что с этим делать.' }
+const SEC_REASONS = { EN: 'The Main Reasons', JP: '主な理由', ZH: '主要原因', 'ZH-T': '主要原因', KO: '주요 이유', ES: 'Las Principales Razones', FR: 'Les Principales Raisons', IT: 'I Principali Motivi', TL: 'Ang Mga Pangunahing Dahilan', ID: 'Alasan Utama', DE: 'Die Hauptgründe', PT: 'As Principais Razões', RU: 'Основные причины' }
+const SEC_TABLE = { EN: 'Typical Wait Times', JP: '目安の待ち時間', ZH: '典型等候时间', 'ZH-T': '典型候診時間', KO: '일반적인 대기 시간', ES: 'Tiempos de Espera Típicos', FR: "Temps d'Attente Typiques", IT: 'Tempi di Attesa Tipici', TL: 'Karaniwang Oras ng Paghihintay', ID: 'Waktu Tunggu Tipikal', DE: 'Typische Wartezeiten', PT: 'Tempos de Espera Típicos', RU: 'Типичное время ожидания' }
+const SEC_TIPS = { EN: 'How to Minimize Your Wait', JP: '待ち時間を短くする方法', ZH: '如何缩短等候时间', 'ZH-T': '如何縮短候診時間', KO: '대기 시간을 줄이는 방법', ES: 'Cómo Minimizar Su Espera', FR: "Comment Minimiser Votre Attente", IT: 'Come Ridurre al Minimo l\'Attesa', TL: 'Paano Bawasan ang Iyong Paghihintay', ID: 'Cara Meminimalkan Waktu Tunggu', DE: 'Wie Sie Ihre Wartezeit Minimieren', PT: 'Como Minimizar Sua Espera', RU: 'Как сократить время ожидания' }
+const BOTTOM_LABEL = { EN: 'Remember: ', JP: '覚えておきましょう：', ZH: '请记住：', 'ZH-T': '請記住：', KO: '기억하세요: ', ES: 'Recuerde: ', FR: 'Rappelez-vous : ', IT: 'Ricorda: ', TL: 'Tandaan: ', ID: 'Ingat: ', DE: 'Denken Sie daran: ', PT: 'Lembre-se: ', RU: 'Помните: ' }
+const BOTTOM = { EN: "Longer wait ≠ worse care. Once you're seen, Japanese doctors are thorough and tests are fast. The wait is the bottleneck; the care itself is excellent.", JP: '待ち時間が長い＝医療の質が低いわけではありません。診察が始まれば、日本の医師は丁寧で検査も迅速です。待ち時間がボトルネックなだけで、ケアの質は優秀です。', ZH: '等候时间长≠医疗质量差。一旦轮到您，日本医生会非常细致，检查也很迅速。等候是瓶颈，但医疗本身是卓越的。', 'ZH-T': '候診時間長≠醫療品質差。輪到您時，日本醫生會非常細心，檢查也很迅速。候診是瓶頸，但醫療本身是卓越的。', KO: '대기 시간이 길다고 해서 의료 수준이 낮은 것은 아닙니다. 진료가 시작되면 일본 의사들은 꼼꼼하고 검사도 빠릅니다. 대기가 병목일 뿐, 의료 자체는 훌륭합니다.', ES: 'Más espera ≠ peor atención. Una vez atendido, los médicos japoneses son minuciosos y las pruebas son rápidas. La espera es el cuello de botella; la atención en sí es excelente.', FR: "Attente plus longue ≠ moins bonne qualité. Une fois vu, les médecins japonais sont minutieux et les examens sont rapides. L'attente est le goulot d'étranglement ; les soins eux-mêmes sont excellents.", IT: "Attesa più lunga ≠ peggiore assistenza. Una volta visitati, i medici giapponesi sono accurati e gli esami sono veloci. L'attesa è il collo di bottiglia; le cure stesse sono eccellenti.", TL: 'Mas matagal na paghihintay ≠ mas masamang pangangalaga. Kapag nakita ka na, ang mga Japanese doctor ay masusing nagtatrabaho at mabilis ang mga pagsusuri. Ang paghihintay ang bottleneck; ang pangangalaga mismo ay mahusay.', ID: 'Waktu tunggu lebih lama ≠ perawatan lebih buruk. Begitu diperiksa, dokter Jepang sangat teliti dan tes dilakukan dengan cepat. Waktu tunggu adalah hambatannya; perawatannya sendiri sangat baik.', DE: 'Längere Wartezeit ≠ schlechtere Versorgung. Sobald Sie dran sind, sind japanische Ärzte gründlich und Tests gehen schnell. Die Wartezeit ist der Engpass; die Versorgung selbst ist ausgezeichnet.', PT: 'Mais espera ≠ pior atendimento. Uma vez atendido, os médicos japoneses são minuciosos e os exames são rápidos. A espera é o gargalo; o cuidado em si é excelente.', RU: 'Долгое ожидание ≠ худшее качество. Как только вас примут, японские врачи будут тщательны, а анализы пройдут быстро. Очередь — это узкое место; сам уход превосходен.' }
+
+const REASONS = [
+  {
+    title: { EN: 'Free access to any hospital', JP: 'どの病院にも自由に受診できる', ZH: '可自由前往任何医院', 'ZH-T': '可自由前往任何醫院', KO: '어느 병원이나 자유롭게 방문 가능', ES: 'Acceso libre a cualquier hospital', FR: "Accès libre à n'importe quel hôpital", IT: 'Accesso libero a qualsiasi ospedale', TL: 'Libreng access sa anumang ospital', ID: 'Akses bebas ke rumah sakit manapun', DE: 'Freier Zugang zu jedem Krankenhaus', PT: 'Acesso livre a qualquer hospital', RU: 'Свободный доступ в любую больницу' },
+    desc: { EN: 'Japan has no mandatory GP referral system. Anyone can walk into a major university hospital for a minor cold, which concentrates volume at the top-tier facilities.', JP: '日本にはかかりつけ医への義務的な紹介制度がないため、軽い風邪でも大学病院に直接来院できます。これが上位施設への患者集中を招いています。', ZH: '日本没有强制性的全科医生转诊制度。任何人都可以直接前往大型大学医院就诊，即使只是轻微感冒，这导致顶级医疗机构患者集中。', 'ZH-T': '日本沒有強制性的全科醫生轉診制度。任何人都可以直接前往大型大學醫院就診，即使只是輕微感冒，這導致頂級醫療機構患者集中。', KO: '일본에는 일반의 의뢰 의무 제도가 없습니다. 가벼운 감기로도 주요 대학병원에 바로 방문할 수 있어, 상위 시설에 환자가 집중됩니다.', ES: 'Japón no tiene un sistema de derivación obligatoria de médico de cabecera. Cualquiera puede entrar en un hospital universitario por un resfriado menor, lo que concentra el volumen en las instalaciones de primer nivel.', FR: "Le Japon n'a pas de système de référence obligatoire par un médecin généraliste. N'importe qui peut entrer dans un grand hôpital universitaire pour un simple rhume, ce qui concentre le volume dans les établissements de premier niveau.", IT: "Il Giappone non ha un sistema obbligatorio di riferimento dal medico di base. Chiunque può entrare in un grande ospedale universitario per un semplice raffreddore, concentrando i pazienti nelle strutture di punta.", TL: 'Walang mandatory GP referral system ang Japan. Kahit sino ay maaaring pumunta sa isang major university hospital para sa simpleng sipon, na nagkokonsentra ng volume sa mga nangungunang pasilidad.', ID: 'Jepang tidak memiliki sistem rujukan dokter umum yang wajib. Siapa pun bisa langsung masuk ke rumah sakit universitas besar untuk flu ringan, yang mengkonsentrasikan volume di fasilitas kelas atas.', DE: 'Japan hat kein obligatorisches Überweisungssystem durch Hausärzte. Jeder kann mit einer leichten Erkältung direkt in ein Universitätskrankenhaus gehen, was das Patientenvolumen in den Top-Einrichtungen konzentriert.', PT: 'O Japão não tem um sistema obrigatório de encaminhamento pelo clínico geral. Qualquer pessoa pode entrar em um grande hospital universitário por um resfriado leve, o que concentra o volume nas instalações de ponta.', RU: 'В Японии нет обязательной системы направлений от терапевта. Любой может прийти в крупную университетскую больницу с лёгкой простудой, что концентрирует поток пациентов в ведущих учреждениях.' },
+  },
+  {
+    title: { EN: 'Universal insurance creates high demand', JP: '国民皆保険が需要を高める', ZH: '全民医保创造高需求', 'ZH-T': '全民醫保創造高需求', KO: '국민 의료보험이 높은 수요를 창출합니다', ES: 'El seguro universal crea alta demanda', FR: "L'assurance universelle crée une forte demande", IT: "L'assicurazione universale crea un'alta domanda", TL: 'Ang universal insurance ay lumilikha ng mataas na demand', ID: 'Asuransi universal menciptakan permintaan tinggi', DE: 'Krankenversicherung für alle schafft hohe Nachfrage', PT: 'O seguro universal cria alta demanda', RU: 'Всеобщее страхование создаёт высокий спрос' },
+    desc: { EN: 'Because insurance covers 70% of costs for most people, medical visits are affordable and frequent. More visits = longer lines.', JP: '保険で医療費の7割が補填されるため、受診が手頃で気軽になり、受診回数が増えます。多く受診すれば待ち時間も長くなります。', ZH: '由于保险为大多数人覆盖70%的费用，就医变得实惠且频繁。就诊次数越多，等候时间越长。', 'ZH-T': '由於保險為大多數人覆蓋70%的費用，就醫變得實惠且頻繁。就診次數越多，候診時間越長。', KO: '보험이 대부분의 사람들에게 비용의 70%를 커버하기 때문에 의료 방문이 저렴하고 잦습니다. 방문이 많을수록 = 대기줄이 길어집니다.', ES: 'Como el seguro cubre el 70% de los costos para la mayoría, las visitas médicas son asequibles y frecuentes. Más visitas = colas más largas.', FR: "Comme l'assurance couvre 70% des coûts pour la plupart des gens, les visites médicales sont abordables et fréquentes. Plus de visites = files d'attente plus longues.", IT: "Poiché l'assicurazione copre il 70% dei costi per la maggior parte delle persone, le visite mediche sono convenienti e frequenti. Più visite = code più lunghe.", TL: 'Dahil ang insurance ay sumasaklaw ng 70% ng gastos para sa karamihan, ang mga medikal na pagbisita ay abot-kaya at madalas. Mas maraming pagbisita = mas mahabang pila.', ID: 'Karena asuransi menanggung 70% biaya bagi kebanyakan orang, kunjungan medis terjangkau dan sering. Lebih banyak kunjungan = antrian lebih panjang.', DE: 'Da die Versicherung für die meisten Menschen 70% der Kosten übernimmt, sind Arztbesuche erschwinglich und häufig. Mehr Besuche = längere Warteschlangen.', PT: 'Como o seguro cobre 70% dos custos para a maioria das pessoas, as consultas são acessíveis e frequentes. Mais visitas = filas mais longas.', RU: 'Поскольку страховка покрывает 70% затрат для большинства людей, визиты к врачу доступны и часты. Больше визитов = длиннее очереди.' },
+  },
+  {
+    title: { EN: 'Elderly population visits more often', JP: '高齢者が頻繁に受診する', ZH: '老龄人口就诊更频繁', 'ZH-T': '老齡人口就診更頻繁', KO: '고령 인구가 더 자주 방문합니다', ES: 'La población mayor visita más frecuentemente', FR: 'La population âgée consulte plus souvent', IT: 'La popolazione anziana visita più spesso', TL: 'Ang matatandang populasyon ay mas madalas bumisita', ID: 'Populasi lansia lebih sering berkunjung', DE: 'Ältere Bevölkerung besucht häufiger', PT: 'A população idosa visita com mais frequência', RU: 'Пожилое население посещает врачей чаще' },
+    desc: { EN: "Japan has the world's oldest population. Regular check-ups and chronic disease management account for a large share of outpatient visits, especially in the morning.", JP: '日本は世界で最も高齢化が進んだ国です。定期健診や慢性疾患の管理が外来受診の大きな割合を占めており、特に午前中に集中しています。', ZH: '日本是世界上老龄化程度最高的国家。定期检查和慢性病管理占门诊量的很大比例，尤其是在上午。', 'ZH-T': '日本是世界上老齡化程度最高的國家。定期檢查和慢性病管理佔門診量的很大比例，尤其是在上午。', KO: '일본은 세계에서 가장 고령화된 나라입니다. 정기 검진과 만성질환 관리가 외래 방문의 큰 비중을 차지하며, 특히 오전에 집중됩니다.', ES: 'Japón tiene la población más envejecida del mundo. Los chequeos regulares y el manejo de enfermedades crónicas representan una gran parte de las visitas ambulatorias, especialmente por la mañana.', FR: "Le Japon a la population la plus âgée au monde. Les contrôles réguliers et la gestion des maladies chroniques représentent une grande part des consultations ambulatoires, surtout le matin.", IT: "Il Giappone ha la popolazione più anziana al mondo. I controlli regolari e la gestione delle malattie croniche rappresentano una grande parte delle visite ambulatoriali, soprattutto al mattino.", TL: 'Ang Japan ay may pinakamatandang populasyon sa mundo. Ang mga regular na check-up at pamamahala ng chronic na sakit ay bumubuo ng malaking bahagi ng mga outpatient visit, lalo na sa umaga.', ID: 'Jepang memiliki populasi paling tua di dunia. Pemeriksaan rutin dan manajemen penyakit kronis menyumbang sebagian besar kunjungan rawat jalan, terutama di pagi hari.', DE: 'Japan hat die älteste Bevölkerung der Welt. Regelmäßige Check-ups und Behandlung chronischer Krankheiten machen einen großen Teil der ambulanten Besuche aus, besonders morgens.', PT: 'O Japão tem a população mais idosa do mundo. Consultas de rotina e gerenciamento de doenças crônicas representam grande parte das visitas ambulatoriais, especialmente pela manhã.', RU: 'Япония имеет самое пожилое население в мире. Регулярные осмотры и лечение хронических заболеваний составляют большую долю амбулаторных визитов, особенно по утрам.' },
+  },
+  {
+    title: { EN: 'Consultations are brief', JP: '診察時間が短い', ZH: '问诊时间短暂', 'ZH-T': '問診時間短暫', KO: '진료 시간이 짧습니다', ES: 'Las consultas son breves', FR: 'Les consultations sont brèves', IT: 'Le consultazioni sono brevi', TL: 'Ang mga konsultasyon ay maikli', ID: 'Konsultasi berlangsung singkat', DE: 'Konsultationen sind kurz', PT: 'As consultas são breves', RU: 'Приёмы короткие' },
+    desc: { EN: 'Doctors see an average of 40–80 patients per day. Appointments are short (3–5 minutes is common), yet the queue to see them is long because so many patients are scheduled.', JP: '医師は1日平均40〜80人を診察します。1回の診察は3〜5分程度と短いですが、予約が多いため列が長くなります。', ZH: '医生每天平均接诊40〜80名患者。就诊时间很短（通常3〜5分钟），但由于预约患者众多，排队时间很长。', 'ZH-T': '醫生每天平均接診40〜80名患者。就診時間很短（通常3〜5分鐘），但由於預約患者眾多，排隊時間很長。', KO: '의사는 하루 평균 40〜80명의 환자를 진료합니다. 진료 시간은 짧지만(3〜5분이 일반적), 예약 환자가 많아 대기줄이 깁니다.', ES: 'Los médicos ven un promedio de 40–80 pacientes por día. Las citas son cortas (3–5 minutos es común), pero la cola es larga porque hay muchos pacientes programados.', FR: "Les médecins voient en moyenne 40 à 80 patients par jour. Les rendez-vous sont courts (3 à 5 minutes est courant), mais la file d'attente est longue car de nombreux patients sont programmés.", IT: "I medici vedono in media 40-80 pazienti al giorno. Gli appuntamenti sono brevi (3-5 minuti è comune), ma la coda è lunga perché molti pazienti sono programmati.", TL: 'Ang mga doktor ay nakakakita ng average na 40–80 pasyente bawat araw. Ang mga appointment ay maikli (3–5 minuto ay karaniwan), ngunit ang pila ay mahaba dahil maraming pasyente ang naka-iskedyul.', ID: 'Dokter melihat rata-rata 40–80 pasien per hari. Janji temu berlangsung singkat (3–5 menit adalah hal umum), namun antrian panjang karena banyak pasien dijadwalkan.', DE: 'Ärzte sehen durchschnittlich 40–80 Patienten pro Tag. Termine sind kurz (3–5 Minuten ist üblich), aber die Warteschlange ist lang, weil so viele Patienten eingeplant sind.', PT: 'Os médicos veem em média 40–80 pacientes por dia. As consultas são curtas (3–5 minutos é comum), mas a fila é longa porque muitos pacientes estão agendados.', RU: 'Врачи принимают в среднем 40–80 пациентов в день. Приёмы короткие (3–5 минут — норма), но очередь длинная, потому что пациентов записано много.' },
+  },
+  {
+    title: { EN: 'Paper-heavy administration', JP: '書類業務が多い', ZH: '行政文书繁多', 'ZH-T': '行政文書繁多', KO: '서류 행정이 많습니다', ES: 'Administración con mucho papeleo', FR: 'Administration très paperassière', IT: 'Amministrazione ricca di documenti', TL: 'Maraming papel na pangangasiwa', ID: 'Administrasi berbasis kertas yang berat', DE: 'Papierlastige Verwaltung', PT: 'Administração com muito papel', RU: 'Бумажная бюрократия' },
+    desc: { EN: 'Many clinics still process paperwork manually, adding time to each patient visit for forms, insurance verification, and receipt printing.', JP: '多くのクリニックはまだ手作業で書類処理を行っており、書類記入・保険確認・領収書印刷などで各患者の処理に時間がかかります。', ZH: '许多诊所仍然手动处理文书工作，每位患者的就诊时间因填写表格、核实保险和打印收据而延长。', 'ZH-T': '許多診所仍然手動處理文書工作，每位患者的就診時間因填寫表格、核實保險和列印收據而延長。', KO: '많은 클리닉이 아직도 서류 작업을 수동으로 처리하여, 각 환자 방문마다 서식 작성, 보험 확인, 영수증 인쇄 등으로 시간이 추가됩니다.', ES: 'Muchas clínicas todavía procesan el papeleo manualmente, añadiendo tiempo a cada visita de paciente para formularios, verificación de seguro e impresión de recibos.', FR: "De nombreuses cliniques traitent encore les documents manuellement, ajoutant du temps à chaque visite pour les formulaires, la vérification de l'assurance et l'impression des reçus.", IT: "Molte cliniche elaborano ancora le pratiche manualmente, aggiungendo tempo a ogni visita per moduli, verifica dell'assicurazione e stampa delle ricevute.", TL: 'Maraming clinic pa rin ang manu-manong nagpoproseso ng mga papeles, na nagdaragdag ng oras sa bawat pagbisita ng pasyente para sa mga form, pagsusuri ng insurance, at pag-print ng resibo.', ID: 'Banyak klinik masih memproses dokumen secara manual, menambahkan waktu pada setiap kunjungan pasien untuk formulir, verifikasi asuransi, dan pencetakan kuitansi.', DE: 'Viele Kliniken verarbeiten Unterlagen noch manuell, was bei jedem Patientenbesuch Zeit für Formulare, Versicherungsüberprüfung und Quittungsdruck kostet.', PT: 'Muitas clínicas ainda processam papelada manualmente, adicionando tempo a cada visita para formulários, verificação de seguro e impressão de recibos.', RU: 'Многие клиники до сих пор обрабатывают документы вручную, что добавляет время на каждый визит: заполнение форм, проверка страховки, печать чеков.' },
+  },
+]
+
+const TIPS: Record<string, string[]> = {
+  EN: ['Visit a small neighborhood clinic (クリニック) instead of a large hospital for non-emergency issues.', 'Arrive at opening time (usually 8:30–9:00 AM). The first 30 minutes are the least crowded.', 'Avoid Mondays and the day after a public holiday — those are the busiest days.', 'Some clinics use online reservation systems (ネット予約). Search for your clinic on their website or on EPARK.', 'Call #7119 first — a nurse may resolve your question without needing a visit at all.'],
+  JP: ['緊急でない症状は大病院でなく近くの個人クリニックを受診する。', '開院時間（通常8:30〜9:00）に到着する。最初の30分が最も空いている。', '月曜日と祝日翌日は最も混雑するため避ける。', 'ネット予約対応のクリニックを探す。EPARKなどで検索可能。', 'まず#7119に電話 — 受診せずに解決できる場合もあります。'],
+  ZH: ['非紧急情况请就近前往小型社区诊所（クリニック），而非大型医院。', '在开门时间到达（通常为上午8:30〜9:00）。前30分钟最不拥挤。', '避免周一和公共假日后的第二天——那是最繁忙的日子。', '部分诊所提供在线预约（ネット予約）。可在其官网或EPARK搜索。', '先拨打#7119——护士可能无需就诊即可解决您的问题。'],
+  'ZH-T': ['非緊急情況請就近前往小型社區診所（クリニック），而非大型醫院。', '在開門時間到達（通常為上午8:30〜9:00）。前30分鐘最不擁擠。', '避免週一和公共假日後的第二天——那是最繁忙的日子。', '部分診所提供線上預約（ネット予約）。可在其官網或EPARK搜尋。', '先撥打#7119——護理師可能無需就診即可解決您的問題。'],
+  KO: ['응급이 아닌 증상에는 대형 병원 대신 근처 소규모 클리닉(クリニック)을 방문하세요.', '개원 시간(보통 오전 8:30〜9:00)에 도착하세요. 처음 30분이 가장 한산합니다.', '월요일과 공휴일 다음 날은 가장 혼잡하므로 피하세요.', '일부 클리닉은 온라인 예약 시스템(ネット予約)을 운영합니다. 클리닉 웹사이트나 EPARK에서 검색하세요.', '먼저 #7119에 전화하세요 — 간호사가 방문 없이 문제를 해결해 줄 수도 있습니다.'],
+  ES: ['Visite una pequeña clínica de barrio (クリニック) en lugar de un hospital grande para problemas no urgentes.', 'Llegue a la hora de apertura (generalmente 8:30–9:00 AM). Los primeros 30 minutos son los menos concurridos.', 'Evite los lunes y el día después de un día festivo — son los días más ocupados.', 'Algunas clínicas usan sistemas de reserva en línea (ネット予約). Búsquelas en su sitio web o en EPARK.', 'Llame al #7119 primero — una enfermera puede resolver su pregunta sin necesidad de visita.'],
+  FR: ["Visitez une petite clinique de quartier (クリニック) plutôt qu'un grand hôpital pour les problèmes non urgents.", "Arrivez à l'heure d'ouverture (généralement 8h30–9h00). Les 30 premières minutes sont les moins fréquentées.", "Évitez les lundis et le lendemain des jours fériés — ce sont les jours les plus chargés.", "Certaines cliniques utilisent des systèmes de réservation en ligne (ネット予約). Recherchez votre clinique sur leur site ou sur EPARK.", "Appelez le #7119 d'abord — une infirmière peut résoudre votre problème sans visite."],
+  IT: ["Visita una piccola clinica di quartiere (クリニック) invece di un grande ospedale per problemi non urgenti.", "Arriva all'orario di apertura (di solito 8:30–9:00). I primi 30 minuti sono i meno affollati.", "Evita il lunedì e il giorno dopo una festa pubblica — sono i giorni più affollati.", "Alcune cliniche usano sistemi di prenotazione online (ネット予約). Cerca la tua clinica sul loro sito o su EPARK.", "Chiama prima il #7119 — un infermiere potrebbe risolvere la tua domanda senza bisogno di visita."],
+  TL: ['Bisitahin ang isang maliit na neighborhood clinic (クリニック) sa halip na isang malaking ospital para sa mga hindi emergency na isyu.', 'Dumating sa oras ng pagbubukas (karaniwan ay 8:30–9:00 AM). Ang unang 30 minuto ay hindi masikip.', 'Iwasan ang mga Lunes at ang araw pagkatapos ng pista opisyal — ito ang pinaka-abalang mga araw.', 'Ang ilang clinic ay gumagamit ng online reservation system (ネット予約). Hanapin ang iyong clinic sa kanilang website o sa EPARK.', 'Tumawag muna sa #7119 — maaaring malutas ng nars ang iyong tanong nang hindi kailangang bumisita.'],
+  ID: ['Kunjungi klinik kecil di lingkungan sekitar (クリニック) daripada rumah sakit besar untuk masalah non-darurat.', 'Datang pada jam buka (biasanya 8:30–9:00 pagi). 30 menit pertama adalah yang paling tidak ramai.', 'Hindari hari Senin dan hari setelah hari libur umum — itulah hari-hari tersibuk.', 'Beberapa klinik menggunakan sistem reservasi online (ネット予約). Cari klinik Anda di website mereka atau di EPARK.', 'Hubungi #7119 terlebih dahulu — perawat mungkin bisa menyelesaikan pertanyaan Anda tanpa perlu kunjungan.'],
+  DE: ['Besuchen Sie eine kleine Stadtteilklinik (クリニック) statt eines großen Krankenhauses für nicht dringende Probleme.', 'Kommen Sie zur Öffnungszeit (normalerweise 8:30–9:00 Uhr). Die ersten 30 Minuten sind am wenigsten überfüllt.', 'Meiden Sie Montage und den Tag nach einem Feiertag — das sind die belebtesten Tage.', 'Manche Kliniken nutzen Online-Reservierungssysteme (ネット予約). Suchen Sie Ihre Klinik auf deren Website oder bei EPARK.', 'Rufen Sie zuerst #7119 an — eine Krankenschwester kann Ihre Frage möglicherweise ohne Besuch lösen.'],
+  PT: ['Visite uma pequena clínica de bairro (クリニック) em vez de um grande hospital para problemas não urgentes.', 'Chegue na hora de abertura (geralmente 8:30–9:00). Os primeiros 30 minutos são os menos lotados.', 'Evite segundas-feiras e o dia após um feriado — esses são os dias mais movimentados.', 'Algumas clínicas usam sistemas de reserva online (ネット予約). Procure sua clínica no site deles ou no EPARK.', 'Ligue para #7119 primeiro — uma enfermeira pode resolver sua dúvida sem precisar de uma visita.'],
+  RU: ['При несрочных проблемах обращайтесь в небольшую районную клинику (クリニック), а не в крупную больницу.', 'Приходите к открытию (обычно 8:30–9:00). Первые 30 минут — наименее загруженные.', 'Избегайте понедельников и дней после праздников — это самые загруженные дни.', 'Некоторые клиники используют онлайн-запись (ネット予約). Ищите свою клинику на их сайте или на EPARK.', 'Сначала позвоните на #7119 — медсестра может ответить на ваш вопрос без визита.'],
+}
+
+const WAIT_TABLE = [
+  {
+    place: { EN: 'Neighborhood clinic (クリニック)', JP: '個人クリニック', ZH: '社区诊所（クリニック）', 'ZH-T': '社區診所（クリニック）', KO: '동네 클리닉(クリニック)', ES: 'Clínica de barrio (クリニック)', FR: 'Clinique de quartier (クリニック)', IT: 'Clinica di quartiere (クリニック)', TL: 'Neighborhood clinic (クリニック)', ID: 'Klinik lingkungan (クリニック)', DE: 'Stadtteilklinik (クリニック)', PT: 'Clínica de bairro (クリニック)', RU: 'Районная клиника (クリニック)' },
+    time: { EN: '30 min – 1.5 hours', JP: '30分〜1.5時間', ZH: '30分钟〜1.5小时', 'ZH-T': '30分鐘〜1.5小時', KO: '30분 〜 1.5시간', ES: '30 min – 1.5 horas', FR: '30 min – 1h30', IT: '30 min – 1,5 ore', TL: '30 min – 1.5 oras', ID: '30 mnt – 1,5 jam', DE: '30 Min. – 1,5 Std.', PT: '30 min – 1,5 horas', RU: '30 мин – 1,5 часа' },
+    color: '#16a34a',
+  },
+  {
+    place: { EN: 'City hospital outpatient', JP: '市立病院外来', ZH: '市立医院门诊', 'ZH-T': '市立醫院門診', KO: '시립 병원 외래', ES: 'Hospital municipal ambulatorio', FR: 'Hôpital municipal (ambulatoire)', IT: 'Ospedale cittadino (ambulatoriale)', TL: 'City hospital outpatient', ID: 'Rawat jalan rumah sakit kota', DE: 'Städtisches Krankenhaus (ambulant)', PT: 'Hospital municipal (ambulatório)', RU: 'Городская больница (амбулатория)' },
+    time: { EN: '1 – 3 hours', JP: '1〜3時間', ZH: '1〜3小时', 'ZH-T': '1〜3小時', KO: '1〜3시간', ES: '1 – 3 horas', FR: '1 – 3 heures', IT: '1 – 3 ore', TL: '1 – 3 oras', ID: '1 – 3 jam', DE: '1 – 3 Std.', PT: '1 – 3 horas', RU: '1 – 3 часа' },
+    color: '#7a5700',
+  },
+  {
+    place: { EN: 'University hospital (大学病院)', JP: '大学病院', ZH: '大学附属医院（大学病院）', 'ZH-T': '大學附屬醫院（大学病院）', KO: '대학병원(大学病院)', ES: 'Hospital universitario (大学病院)', FR: 'Hôpital universitaire (大学病院)', IT: 'Ospedale universitario (大学病院)', TL: 'University hospital (大学病院)', ID: 'Rumah sakit universitas (大学病院)', DE: 'Universitätsklinikum (大学病院)', PT: 'Hospital universitário (大学病院)', RU: 'Университетская больница (大学病院)' },
+    time: { EN: '2 – 4+ hours', JP: '2〜4時間以上', ZH: '2〜4小时以上', 'ZH-T': '2〜4小時以上', KO: '2〜4시간 이상', ES: '2 – 4+ horas', FR: '2 – 4h+', IT: '2 – 4+ ore', TL: '2 – 4+ oras', ID: '2 – 4+ jam', DE: '2 – 4+ Std.', PT: '2 – 4+ horas', RU: '2 – 4+ часа' },
+    color: '#b22620',
+  },
+  {
+    place: { EN: 'ER (non-emergency triage)', JP: '救急外来（非緊急）', ZH: '急诊室（非紧急分诊）', 'ZH-T': '急診室（非緊急分診）', KO: '응급실 (비응급 분류)', ES: 'Urgencias (triaje no urgente)', FR: 'Urgences (triage non urgent)', IT: 'Pronto soccorso (triage non urgente)', TL: 'ER (non-emergency triage)', ID: 'UGD (triase non-darurat)', DE: 'Notaufnahme (nicht dringend)', PT: 'Pronto-socorro (triagem não urgente)', RU: 'Скорая (не экстренный случай)' },
+    time: { EN: '1 – 5 hours', JP: '1〜5時間', ZH: '1〜5小时', 'ZH-T': '1〜5小時', KO: '1〜5시간', ES: '1 – 5 horas', FR: '1 – 5 heures', IT: '1 – 5 ore', TL: '1 – 5 oras', ID: '1 – 5 jam', DE: '1 – 5 Std.', PT: '1 – 5 horas', RU: '1 – 5 часов' },
+    color: '#b22620',
+  },
+]
+
+export default function WaitTimesPage() {
+  const { lang } = useLang()
+  const { isSaved, toggle } = useSaved()
+  const saved = isSaved(ITEM.href)
+  const tips = TIPS[lang] ?? TIPS.EN
+
+  return (
+    <main className="mj-container" style={{ paddingTop: 28, paddingBottom: 40 }}>
+      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 4 }}>
+        <Link href="/dashboard" className="page-back" style={{ marginBottom: 0 }}>
+          <span className="material-symbols-outlined" style={{ fontSize: 16 }}>arrow_back</span>
+          {tr(COMMON.back, lang)}
+        </Link>
+        <button onClick={() => toggle(ITEM)} style={{ background: 'none', border: 'none', cursor: 'pointer', padding: 6, display: 'flex', alignItems: 'center', gap: 4, color: saved ? '#b22620' : '#78716c', fontSize: 12 }}>
+          <span className="material-symbols-outlined" style={{ fontSize: 20, fontVariationSettings: saved ? "'FILL' 1" : "'FILL' 0" }}>bookmark</span>
+          {saved ? tr(COMMON.saved, lang) : tr(COMMON.save, lang)}
+        </button>
+      </div>
+
+      <div style={{ marginBottom: 20, marginTop: 16 }}>
+        <p style={{ fontSize: 11, textTransform: 'uppercase', letterSpacing: '0.1em', color: '#b22620', fontWeight: 700, marginBottom: 8 }}>{tr(ARTICLES.category, lang)}</p>
+        <h1 className="font-headline" style={{ fontSize: 24, fontWeight: 800, color: '#1e1b1c', lineHeight: 1.3, marginBottom: 10 }}>{tr(ARTICLES.waitTimes.title, lang)}</h1>
+        <p style={{ fontSize: 13, color: '#78716c' }}>{tr(ARTICLES.waitTimes.sub, lang)}</p>
+      </div>
+
+      <div style={{ height: 1, background: 'rgba(226,190,186,0.3)', marginBottom: 24 }} />
+
+      <p style={{ fontSize: 14, color: '#5a413d', lineHeight: 1.7, marginBottom: 28 }}>{tl(INTRO, lang)}</p>
+
+      <section style={{ marginBottom: 28 }}>
+        <h2 className="font-headline" style={{ fontSize: 15, fontWeight: 700, color: '#1e1b1c', marginBottom: 14 }}>{tl(SEC_REASONS, lang)}</h2>
+        <div style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
+          {REASONS.map((item, i) => (
+            <div key={i} style={{ display: 'flex', gap: 14, background: '#fff', borderRadius: 12, padding: '14px 16px', border: '1px solid rgba(226,190,186,0.2)' }}>
+              <div style={{ width: 28, height: 28, borderRadius: '50%', background: '#b22620', color: '#fff', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 13, fontWeight: 700, flexShrink: 0, marginTop: 1 }}>{i + 1}</div>
+              <div>
+                <p className="font-headline" style={{ fontSize: 13, fontWeight: 700, color: '#1e1b1c', marginBottom: 4 }}>{tl(item.title, lang)}</p>
+                <p style={{ fontSize: 13, color: '#5a413d', lineHeight: 1.6 }}>{tl(item.desc, lang)}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <section style={{ marginBottom: 28 }}>
+        <h2 className="font-headline" style={{ fontSize: 15, fontWeight: 700, color: '#1e1b1c', marginBottom: 12 }}>{tl(SEC_TABLE, lang)}</h2>
+        <div style={{ background: '#fff', borderRadius: 12, border: '1px solid rgba(226,190,186,0.2)', overflow: 'hidden' }}>
+          {WAIT_TABLE.map((row, i, arr) => (
+            <div key={i} style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '12px 16px', borderBottom: i < arr.length - 1 ? '1px solid rgba(226,190,186,0.12)' : 'none' }}>
+              <span style={{ fontSize: 13, color: '#1e1b1c' }}>{tl(row.place, lang)}</span>
+              <span style={{ fontSize: 13, fontWeight: 700, color: row.color }}>{tl(row.time, lang)}</span>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <section style={{ marginBottom: 28 }}>
+        <h2 className="font-headline" style={{ fontSize: 15, fontWeight: 700, color: '#1e1b1c', marginBottom: 12 }}>{tl(SEC_TIPS, lang)}</h2>
+        <div style={{ background: '#faf2f2', borderRadius: 14, padding: '18px 20px', border: '1px solid rgba(226,190,186,0.2)' }}>
+          {tips.map((tip, i) => (
+            <div key={i} style={{ display: 'flex', gap: 10, marginBottom: i < tips.length - 1 ? 10 : 0, alignItems: 'flex-start' }}>
+              <span className="material-symbols-outlined" style={{ fontSize: 15, color: '#206777', flexShrink: 0, marginTop: 2, fontVariationSettings: "'FILL' 1" as string }}>tip</span>
+              <p style={{ fontSize: 13, color: '#5a413d', lineHeight: 1.6 }}>{tip}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <div style={{ background: '#fff', borderRadius: 12, padding: '14px 16px', border: '1px solid rgba(226,190,186,0.2)' }}>
+        <p style={{ fontSize: 12, color: '#5a413d', lineHeight: 1.6 }}>
+          <strong>{tl(BOTTOM_LABEL, lang)}</strong>
+          {tl(BOTTOM, lang)}
+        </p>
+      </div>
+    </main>
+  )
+}

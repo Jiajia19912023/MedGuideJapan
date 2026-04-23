@@ -1,0 +1,97 @@
+﻿@import 'tailwindcss';
+
+@theme inline {
+  /* Stitch: Hokusai Gift Fusion design tokens */
+  --color-primary: #b22620;
+  --color-primary-container: #d54035;
+  --color-primary-fixed: #ffdad5;
+  --color-primary-fixed-dim: #ffb4aa;
+  --color-on-primary: #ffffff;
+  --color-on-primary-fixed: #410001;
+  --color-on-primary-fixed-variant: #91090b;
+  --color-secondary: #206777;
+  --color-secondary-container: #a9eafd;
+  --color-secondary-fixed: #adecff;
+  --color-secondary-fixed-dim: #90d0e3;
+  --color-on-secondary: #ffffff;
+  --color-on-secondary-container: #256b7b;
+  --color-on-secondary-fixed: #001f26;
+  --color-on-secondary-fixed-variant: #004e5d;
+  --color-tertiary: #7a5700;
+  --color-tertiary-container: #996e00;
+  --color-tertiary-fixed: #ffdea6;
+  --color-tertiary-fixed-dim: #f7bd48;
+  --color-on-tertiary: #ffffff;
+  --color-on-tertiary-container: #fffeff;
+  --color-on-tertiary-fixed: #271900;
+  --color-on-tertiary-fixed-variant: #5d4200;
+  --color-error: #ba1a1a;
+  --color-error-container: #ffdad6;
+  --color-on-error: #ffffff;
+  --color-on-error-container: #93000a;
+  --color-surface: #fff8f8;
+  --color-surface-dim: #e0d8d9;
+  --color-surface-bright: #fff8f8;
+  --color-surface-variant: #e9e0e1;
+  --color-surface-tint: #b42821;
+  --color-surface-container: #f4eced;
+  --color-surface-container-low: #faf2f2;
+  --color-surface-container-high: #efe6e7;
+  --color-surface-container-highest: #e9e0e1;
+  --color-surface-container-lowest: #ffffff;
+  --color-on-surface: #1e1b1c;
+  --color-on-surface-variant: #5a413d;
+  --color-outline: #8e706c;
+  --color-outline-variant: #e2beba;
+  --color-background: #fff8f8;
+  --color-on-background: #1e1b1c;
+  --color-inverse-surface: #332f30;
+  --color-inverse-primary: #ffb4aa;
+  --color-inverse-on-surface: #f7eff0;
+  /* Stitch font families */
+  --font-headline: 'Noto Serif JP', serif;
+  --font-body: 'Plus Jakarta Sans', sans-serif;
+  --font-label: 'Work Sans', sans-serif;
+  /* Existing colors */
+  --color-blue-50: #eff6ff;
+  --color-blue-100: #dbeafe;
+  --color-blue-200: #bfdbfe;
+  --color-blue-600: #2563eb;
+  --color-blue-700: #1d4ed8;
+  --color-green-50: #f0fdf4;
+  --color-green-100: #dcfce7;
+  --color-green-600: #16a34a;
+  --color-green-700: #15803d;
+  --color-red-50: #fef2f2;
+  --color-red-100: #fee2e2;
+  --color-red-200: #fecaca;
+  --color-red-600: #dc2626;
+  --color-red-700: #b91c1c;
+  --color-purple-600: #9333ea;
+  --color-purple-700: #7e22ce;
+  --color-gray-50: #f9fafb;
+  --color-gray-100: #f3f4f6;
+  --color-gray-200: #e5e7eb;
+  --color-gray-300: #d1d5db;
+  --color-gray-600: #4b5563;
+  --color-gray-700: #374151;
+  --color-gray-800: #1f2937;
+  --color-indigo-100: #e0e7ff;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  width: 100%;
+  height: 100%;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+  background: linear-gradient(to bottom right, #eff6ff, #e0e7ff);
+  color: #1f2937;
+}

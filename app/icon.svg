@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200">
+  <defs>
+    <!-- Sakura petal: narrow base, wide middle, bifid (notched) tip -->
+    <path id="petal" d="M0,15 C-26,15 -48,-10 -48,-36 C-48,-63 -27,-80 -6,-78 C-2,-85 0,-76 0,-76 C0,-76 2,-85 6,-78 C27,-80 48,-63 48,-36 C48,-10 26,15 0,15Z"/>
+  </defs>
+
+  <!-- White background -->
+  <rect width="200" height="200" fill="white"/>
+
+  <!-- Sakura petals — white fill, drawn first -->
+  <g fill="white" stroke="none" transform="translate(100,100)">
+    <use href="#petal" transform="rotate(0)   translate(0,-15)"/>
+    <use href="#petal" transform="rotate(72)  translate(0,-15)"/>
+    <use href="#petal" transform="rotate(144) translate(0,-15)"/>
+    <use href="#petal" transform="rotate(216) translate(0,-15)"/>
+    <use href="#petal" transform="rotate(288) translate(0,-15)"/>
+  </g>
+
+  <!-- Sakura petals — dark outline, drawn on top -->
+  <g fill="none" stroke="#1a1a1a" stroke-width="7" stroke-linejoin="round" transform="translate(100,100)">
+    <use href="#petal" transform="rotate(0)   translate(0,-15)"/>
+    <use href="#petal" transform="rotate(72)  translate(0,-15)"/>
+    <use href="#petal" transform="rotate(144) translate(0,-15)"/>
+    <use href="#petal" transform="rotate(216) translate(0,-15)"/>
+    <use href="#petal" transform="rotate(288) translate(0,-15)"/>
+  </g>
+
+  <!-- White center circle to clean up petal overlaps -->
+  <circle cx="100" cy="100" r="24" fill="white"/>
+
+  <!-- Red medical cross -->
+  <rect x="66" y="89" width="68" height="22" fill="#e0000f" rx="3"/>
+  <rect x="89" y="66" width="22" height="68" fill="#e0000f" rx="3"/>
+</svg>
