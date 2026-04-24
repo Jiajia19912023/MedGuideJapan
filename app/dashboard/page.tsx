@@ -2,7 +2,6 @@
 import { useEffect } from 'react'
 import Link from 'next/link'
 import { useLang } from './lang-context'
-import { useResidency, type ResidencyType } from './residency-context'
 import { tr, HOME, RESIDENCY } from './translations'
 
 const POPULAR_TAGS: Record<string, string>[] = [
@@ -59,7 +58,7 @@ const DISASTER_T = {
   dial:  { EN: 'Disaster Message Dial', JP: '災害用伝言ダイヤル', ZH: '灾害留言电话', 'ZH-T': '災害留言電話', KO: '재난 메시지 다이얼', ES: 'Línea de Mensajes', FR: 'Messagerie Catastrophe', IT: 'Messaggeria Disastri', TL: 'Disaster Dial', ID: 'Dial Bencana', DE: 'Katastrophen-Dial', PT: 'Discagem Desastres', RU: 'Линия бедствий' },
 }
 
-const RESIDENCY_ITEMS: { type: ResidencyType; icon: string; color: string; bg: string }[] = [
+const RESIDENCY_ITEMS: { type: string; icon: string; color: string; bg: string }[] = [
   { type: 'tourist',  icon: 'flight',            color: '#206777', bg: '#f0fafa' },
   { type: 'newcomer', icon: 'card_travel',        color: '#7a5700', bg: '#fdf8f0' },
   { type: 'resident', icon: 'home',               color: '#b22620', bg: '#fff5f5' },
@@ -71,7 +70,6 @@ function tl(map: Record<string, string>, lang: string) {
 
 export default function DashboardHome() {
   const { lang } = useLang()
-  const { residency, setResidency } = useResidency()
 
   useEffect(() => {
     const saved = sessionStorage.getItem('dashboard-scroll')
@@ -95,51 +93,21 @@ export default function DashboardHome() {
           {tr(HOME.h1, lang)}<br />{tr(HOME.h2, lang)}
         </h2>
 
-        {/* Residency selector */}
-        <div style={{ background: '#fff', borderRadius: 16, padding: '18px 20px', border: '1px solid rgba(226,190,186,0.25)', marginBottom: 16 }}>
-          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: 12 }}>
-            <div>
-              <p className="font-headline" style={{ fontWeight: 700, fontSize: 14, color: '#1e1b1c', marginBottom: 3 }}>
-                {lang === 'JP' ? 'ガイドをパーソナライズ' : lang === 'ZH' || lang === 'ZH-T' ? '个性化您的指南' : lang === 'KO' ? '가이드 개인 설정' : 'Personalize Your Guide'}
-              </p>
-              <p style={{ fontSize: 11, color: '#78716c', lineHeight: 1.5 }}>
-                {lang === 'JP' ? '滞在状況を選ぶと、保険・費用・手続きの情報が最適化されます' : lang === 'ZH' || lang === 'ZH-T' ? '选择您的情况，自动显示相关保险、费用和手续信息' : lang === 'KO' ? '상황을 선택하면 보험, 비용, 절차 정보가 최적화됩니다' : 'Select your situation — insurance costs, fees, and required steps differ significantly'}
-              </p>
+        {/* Residency info — static, all 3 conditions always shown */}
+        <div style={{ display: 'flex', flexDirection: 'column', gap: 8, marginBottom: 16 }}>
+          {RESIDENCY_ITEMS.map(item => (
+            <div key={item.type} style={{ background: item.bg, borderRadius: 12, border: `1px solid ${item.color}22`, borderLeft: `3px solid ${item.color}`, padding: '12px 14px', display: 'flex', gap: 12, alignItems: 'flex-start' }}>
+              <span className="material-symbols-outlined" style={{ fontSize: 20, color: item.color, flexShrink: 0, marginTop: 1, fontVariationSettings: "'FILL' 1" }}>{item.icon}</span>
+              <div>
+                <p className="font-headline" style={{ fontWeight: 700, fontSize: 13, color: item.color, marginBottom: 3 }}>
+                  {tr(RESIDENCY[item.type as keyof typeof RESIDENCY], lang)}
+                </p>
+                <p style={{ fontSize: 12, color: '#5a413d', lineHeight: 1.55 }}>
+                  {tr(RESIDENCY[`${item.type}Desc` as keyof typeof RESIDENCY], lang)}
+                </p>
+              </div>
             </div>
-          </div>
-          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: 8 }}>
-            {RESIDENCY_ITEMS.map(item => {
-              const active = residency === item.type
-              const badge: Record<string, Record<string, string>> = {
-                tourist:  { EN: '100% self-pay', JP: '全額自己負担', ZH: '全额自付', 'ZH-T': '全額自付', KO: '전액 자비', ES: '100% propio', FR: '100% soi-même', IT: '100% proprio', TL: '100% sarili', ID: '100% sendiri', DE: '100% selbst', PT: '100% próprio', RU: '100% сам' },
-                newcomer: { EN: 'NHI enrollment', JP: 'NHI加入必要', ZH: '需加入NHI', 'ZH-T': '需加入NHI', KO: 'NHI 등록 필요', ES: 'Inscripción NHI', FR: 'Inscription NHI', IT: 'Iscrizione NHI', TL: 'NHI pagpapalista', ID: 'Daftar NHI', DE: 'NHI anmelden', PT: 'Inscrição NHI', RU: 'Запись в NHI' },
-                resident: { EN: '30% co-pay', JP: '3割負担', ZH: '30%自付', 'ZH-T': '30%自付', KO: '30% 본인부담', ES: '30% copago', FR: '30% ticket mod.', IT: '30% copagamento', TL: '30% sarili', ID: '30% sendiri', DE: '30% Selbstbehalt', PT: '30% copagamento', RU: '30% доплата' },
-              }
-              return (
-                <button key={item.type} onClick={() => setResidency(item.type)} style={{
-                  padding: '12px 8px', borderRadius: 12, border: active ? `2px solid ${item.color}` : '1.5px solid rgba(226,190,186,0.3)',
-                  background: active ? item.bg : '#faf9f8', cursor: 'pointer', textAlign: 'center',
-                  transition: 'all 0.15s',
-                }}>
-                  <span className="material-symbols-outlined" style={{ fontSize: 22, color: active ? item.color : '#c7bfbe', display: 'block', marginBottom: 4, fontVariationSettings: active ? "'FILL' 1" : "'FILL' 0" }}>{item.icon}</span>
-                  <span style={{ fontSize: 11, fontWeight: active ? 700 : 500, color: active ? item.color : '#78716c', lineHeight: 1.3, display: 'block', marginBottom: 4 }}>
-                    {tr(RESIDENCY[item.type as keyof typeof RESIDENCY], lang)}
-                  </span>
-                  <span style={{ fontSize: 9, color: active ? item.color : '#a09898', background: active ? `${item.color}15` : 'rgba(0,0,0,0.04)', padding: '2px 6px', borderRadius: 999, display: 'inline-block', lineHeight: 1.5 }}>
-                    {(badge[item.type as string][lang] ?? badge[item.type as string]['EN'])}
-                  </span>
-                </button>
-              )
-            })}
-          </div>
-          {residency && (
-            <div style={{ marginTop: 10, padding: '10px 12px', background: RESIDENCY_ITEMS.find(r => r.type === residency)?.bg, borderRadius: 8, display: 'flex', gap: 8, alignItems: 'flex-start', borderLeft: `3px solid ${RESIDENCY_ITEMS.find(r => r.type === residency)?.color}` }}>
-              <span className="material-symbols-outlined" style={{ fontSize: 14, color: RESIDENCY_ITEMS.find(r => r.type === residency)?.color, marginTop: 2, flexShrink: 0 }}>info</span>
-              <span style={{ fontSize: 12, color: '#5a413d', lineHeight: 1.55 }}>
-                {tr(RESIDENCY[`${residency}Desc` as keyof typeof RESIDENCY], lang)}
-              </span>
-            </div>
-          )}
+          ))}
         </div>
 
         {/* Assessment Hub */}
