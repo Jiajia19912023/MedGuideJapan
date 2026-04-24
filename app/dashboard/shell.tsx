@@ -21,25 +21,34 @@ const LANGUAGES: { label: string; code: LangCode }[] = [
   { label: 'Deutsch', code: 'DE' },
   { label: 'Português (BR)', code: 'PT' },
   { label: 'Русский', code: 'RU' },
+  { label: '廣東話', code: 'YUE' },
 ]
 
 const NAV_LABELS: Record<string, string[]> = {
-  EN: ['Home', 'Emergency', 'Search', 'Saved'],
-  JP: ['ホーム', '緊急', '検索', '保存'],
-  ZH: ['首页', '紧急', '搜索', '收藏'],
-  'ZH-T': ['首頁', '緊急', '搜索', '收藏'],
-  KO: ['홈', '긴급', '검색', '저장'],
-  ES: ['Inicio', 'Emergencia', 'Buscar', 'Guardado'],
-  FR: ['Accueil', 'Urgence', 'Recherche', 'Enregistré'],
-  IT: ['Home', 'Emergenza', 'Ricerca', 'Salvati'],
-  TL: ['Home', 'Emergency', 'Paghahanap', 'Na-save'],
-  ID: ['Beranda', 'Darurat', 'Cari', 'Tersimpan'],
-  DE: ['Start', 'Notfall', 'Suche', 'Gespeichert'],
-  PT: ['Início', 'Emergência', 'Buscar', 'Salvos'],
-  RU: ['Главная', 'Срочно', 'Поиск', 'Сохранено'],
+  EN:    ['Home', 'Emergency', 'Search', 'Saved'],
+  JP:    ['ホーム', '緊急', '検索', '保存'],
+  ZH:    ['首页', '紧急', '搜索', '收藏'],
+  'ZH-T':['首頁', '緊急', '搜索', '收藏'],
+  KO:    ['홈', '긴급', '검색', '저장'],
+  ES:    ['Inicio', 'Emergencia', 'Buscar', 'Guardado'],
+  FR:    ['Accueil', 'Urgence', 'Recherche', 'Enregistré'],
+  IT:    ['Home', 'Emergenza', 'Ricerca', 'Salvati'],
+  TL:    ['Home', 'Emergency', 'Paghahanap', 'Na-save'],
+  ID:    ['Beranda', 'Darurat', 'Cari', 'Tersimpan'],
+  DE:    ['Start', 'Notfall', 'Suche', 'Gespeichert'],
+  PT:    ['Início', 'Emergência', 'Buscar', 'Salvos'],
+  RU:    ['Главная', 'Срочно', 'Поиск', 'Сохранено'],
+  YUE:   ['主頁', '緊急', '搜尋', '已儲存'],
 }
 const NAV_HREFS = ['/dashboard', '/dashboard/emergency', '/dashboard/search', '/dashboard/saved']
 const NAV_ICONS = ['home', 'emergency_heat', 'search', 'bookmark']
+
+const HTML_LANG: Record<string, string> = {
+  EN: 'en', JP: 'ja', ZH: 'zh-Hans', 'ZH-T': 'zh-Hant',
+  KO: 'ko', ES: 'es', FR: 'fr', IT: 'it',
+  TL: 'tl', ID: 'id', DE: 'de', PT: 'pt-BR', RU: 'ru',
+  YUE: 'yue-Hant-HK',
+}
 
 const SHELL_CSS = `
   .mj-root { background: #fff8f8; color: #1e1b1c; min-height: 100dvh; }
@@ -72,6 +81,10 @@ function Shell({ children }: { children: ReactNode }) {
   const pathname = usePathname()
   const router = useRouter()
   const isHome = pathname === '/dashboard'
+
+  useEffect(() => {
+    document.documentElement.lang = HTML_LANG[lang] ?? 'en'
+  }, [lang])
 
   useEffect(() => {
     const handler = (e: MouseEvent) => {

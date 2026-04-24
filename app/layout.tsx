@@ -2,8 +2,8 @@
 import './globals.css';
 
 export const metadata: Metadata = {
-  title: '看護師休暇希望申請システム',
-  description: '日本の病院向け看護師休暇希望申請管理システム',
+  title: 'MedGuide Japan',
+  description: 'Free multilingual healthcare guide for foreigners in Japan',
 };
 
 export const viewport: Viewport = {
@@ -17,7 +17,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="ja">
+    <html lang="en">
       <body className="antialiased bg-slate-100">
         {children}
       </body>
