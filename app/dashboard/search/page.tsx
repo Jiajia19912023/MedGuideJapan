@@ -308,6 +308,30 @@ const RESULTS_ID = [
   { title: 'Dukungan Bahasa Inggris dan Multibahasa', category: 'hospitals', href: '/dashboard/english-support', desc: 'Hotline gratis, layanan penerjemah, dan aplikasi multibahasa.' },
 ]
 
+const RESULTS_YUE = [
+  { title: '突然發燒 — 點算好', category: 'symptoms', href: '/dashboard/emergency', desc: '喺日本出現高燒時嘅處理步驟。', kw: '感冒 流感 發燒 高燒 退燒 體溫 頭痛 咳嗽 鼻水 發冷 著涼' },
+  { title: '搵識講英文嘅醫生', category: 'hospitals', href: '/dashboard/english-support', desc: '獲取英文醫療幫助嘅免費電話、翻譯同應用程式。', kw: '英文 翻譯 通譯 語言 外語 多語言 溝通' },
+  { title: '外國人健康保險（NHI）', category: 'insurance', href: '/dashboard/system/insurance', desc: '國民健康保險費用、自付額同加入資格。', kw: '保險 國保 加入 醫療費 保費 社保 健康保險' },
+  { title: '夜間同假日診所', category: 'hospitals', href: '/dashboard/night-care', desc: '點樣喺附近搵到非工作時間嘅醫療服務。', kw: '急診 夜診 深夜 假日 時間外 週末 休假' },
+  { title: '喺日本取處方藥', category: 'medicine', href: '/dashboard/articles/late-night-medicine', desc: '處方箋同藥局系統嘅運作方式。', kw: '藥 處方 藥局 藥店 開藥 處方箋 取藥' },
+  { title: '救護車 — 幾時打119', category: 'emergency', href: '/dashboard/ambulance', desc: '日本使用緊急服務嘅指引。', kw: '急救 119 救命 緊急 呼救 救護車' },
+  { title: '睇醫生準備清單', category: 'hospitals', href: '/dashboard/checklist', desc: '預約時需要攜帶嘅文件同物品。', kw: '文件 保險證 身份證 證件 準備 帶咩' },
+  { title: '去邊度先 — 診所同醫院嘅分別', category: 'hospitals', href: '/dashboard/system/primary-care', desc: '診所、醫院或大學醫院 — 點樣選擇。', kw: '去邊度 選擇 診所 大醫院 分別 邊度好' },
+  { title: '轉介信（紹介状）', category: 'hospitals', href: '/dashboard/system/referrals', desc: '幾時需要轉介同點樣拎到轉介信。', kw: '紹介狀 轉院 轉介 專科 推薦信' },
+  { title: '處方箋規則同有效期', category: 'medicine', href: '/dashboard/system/prescriptions', desc: '4日有效期、學名藥同お薬手帳。', kw: '藥 學名藥 有效期 藥手冊 過期 通用藥' },
+  { title: '醫療日語常用句', category: 'hospitals', href: '/dashboard/phrases', desc: '掛號、說明症狀、預約同藥局嘅重要短句。', kw: '日語 會話 點講 表達 語言 單詞 日文' },
+  { title: '就診流程指南', category: 'hospitals', href: '/dashboard/visit-flow', desc: '緊急同普通就診嘅逐步流程圖。', kw: '睇醫生 步驟 流程 點做 手續 就診方法' },
+  { title: '確認我依家嘅健康狀況', category: 'symptoms', href: '/dashboard/health-check', desc: '回答幾個問題，了解係咪要打119、#7119或去診所。', kw: '症狀 判斷 建議 點處理 要去醫院嗎 需要急救嗎' },
+  { title: '#7119 醫療諮詢熱線', category: 'emergency', href: '/dashboard/hotline', desc: '去急診前可免費諮詢護士或醫生。', kw: '電話 熱線 諮詢 護士 7119 免費 相談' },
+  { title: '#8000 兒科建議熱線', category: 'emergency', href: '/dashboard/hotline', desc: '夜間兒童症狀嘅兒科護士建議。', kw: '細路 小兒 兒童 寶寶 8000 BB 嬰兒' },
+  { title: '喺日本醫院會遇到嘅意外', category: 'hospitals', href: '/dashboard/articles/surprises', desc: '同你喺家鄉習慣不同嘅就醫體驗。', kw: '文化 差異 習慣 唔同 注意事項' },
+  { title: '點解等待時間咁長', category: 'hospitals', href: '/dashboard/articles/wait-times', desc: '日本門診等待時間長嘅結構性原因。', kw: '等待 排隊 候診 時間 點解' },
+  { title: '醫療文化差異', category: 'hospitals', href: '/dashboard/articles/culture', desc: '醫生主導決策、抗生素、止痛藥管理等。', kw: '文化 差異 習慣 抗生素 止痛 決策' },
+  { title: '夜間買藥', category: 'medicine', href: '/dashboard/articles/late-night-medicine', desc: '便利店、24小時藥局同醫院藥房嘅使用方法。', kw: '深夜 便利店 買藥 晚上 24小時 夜間' },
+  { title: '英文及多語言支援', category: 'hospitals', href: '/dashboard/english-support', desc: '免費電話熱線、翻譯服務同多語言應用程式，協助你用英文喺日本求醫。', kw: '英文 多語言 翻譯 幫助 通譯 外語' },
+  { title: '喺日本入院須知', category: 'hospitals', href: '/dashboard/articles/hospitalization', desc: '應帶物品、病房規則、探訪時間，以及住院期間嘅醫療差異。', kw: '入院 病房 探訪 病床 插管 抗凝 住院 導尿管 PEG 胃管 吊頂提升機' },
+]
+
 function getResults(lang: string): { title: string; category: string; href: string; desc: string; kw?: string }[] {
   switch (lang) {
     case 'JP': return RESULTS_JP
@@ -322,6 +346,7 @@ function getResults(lang: string): { title: string; category: string; href: stri
     case 'RU': return RESULTS_RU
     case 'TL': return RESULTS_TL
     case 'ID': return RESULTS_ID
+    case 'YUE': return RESULTS_YUE
     default: return RESULTS_EN
   }
 }
@@ -344,6 +369,7 @@ function formatCount(n: number, lang: string): string {
     if (mod10 >= 2 && mod10 <= 4 && (mod100 < 10 || mod100 >= 20)) return `${n} результата`
     return `${n} результатов`
   }
+  if (lang === 'YUE') return `${n} 個結果`
   return `${n} result${n !== 1 ? 's' : ''}`
 }
 
@@ -364,7 +390,7 @@ export default function SearchPage() {
     <main className="mj-container" style={{ paddingTop: 28 }}>
       <Link href="/dashboard" className="page-back">
         <span className="material-symbols-outlined" style={{ fontSize: 16 }}>arrow_back</span>
-        {tr({ EN: 'Back to Home', JP: 'ホームに戻る', ZH: '返回首页', 'ZH-T': '返回首頁', KO: '홈으로', ES: 'Volver', FR: 'Retour', IT: 'Indietro', TL: 'Bumalik', ID: 'Kembali', DE: 'Zurück', PT: 'Voltar', RU: 'Назад' }, lang)}
+        {tr({ EN: 'Back to Home', JP: 'ホームに戻る', ZH: '返回首页', 'ZH-T': '返回首頁', KO: '홈으로', ES: 'Volver', FR: 'Retour', IT: 'Indietro', TL: 'Bumalik', ID: 'Kembali', DE: 'Zurück', PT: 'Voltar', RU: 'Назад', YUE: '返回主頁' }, lang)}
       </Link>
 
       <h1 className="font-headline" style={{ fontSize: 22, fontWeight: 800, color: '#1e1b1c', marginBottom: 18 }}>{tr(SEARCH.title, lang)}</h1>
