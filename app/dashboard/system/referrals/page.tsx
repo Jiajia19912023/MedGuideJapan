@@ -201,42 +201,42 @@ const TYPES = [
   {
     icon: 'stethoscope',
     label: { EN: 'Internal Medicine', JP: '内科', ZH: '内科', 'ZH-T': '內科', YUE: '內科', KO: '내과', ES: 'Medicina Interna', FR: 'Médecine interne', IT: 'Medicina interna', TL: 'Internal Medicine', ID: 'Penyakit Dalam', DE: 'Innere Medizin', PT: 'Medicina Interna', RU: 'Терапия' },
-    note: { EN: 'General health, chest, stomach, infection', ZH: '全身、胸部、胃肠、感染', 'ZH-T': '全身、胸部、腸胃、感染', YUE: '全身、胸部、腸胃、感染', KO: '전신, 흉부, 위, 감염', ES: 'Salud general, pecho, estómago, infecciones', FR: 'Santé générale, poitrine, estomac, infection', IT: 'Salute generale, torace, stomaco, infezione', TL: 'Pangkalahatang kalusugan, dibdib, tiyan, impeksyon', ID: 'Kesehatan umum, dada, perut, infeksi', DE: 'Allgemeine Gesundheit, Brust, Magen, Infektion', PT: 'Saúde geral, tórax, estômago, infecção', RU: 'Общее здоровье, грудь, желудок, инфекции' },
+    note: { EN: 'General health, chest, stomach, infection', JP: '全身の健康・胸部・胃腸・感染症', ZH: '全身、胸部、胃肠、感染', 'ZH-T': '全身、胸部、腸胃、感染', YUE: '全身、胸部、腸胃、感染', KO: '전신, 흉부, 위, 감염', ES: 'Salud general, pecho, estómago, infecciones', FR: 'Santé générale, poitrine, estomac, infection', IT: 'Salute generale, torace, stomaco, infezione', TL: 'Pangkalahatang kalusugan, dibdib, tiyan, impeksyon', ID: 'Kesehatan umum, dada, perut, infeksi', DE: 'Allgemeine Gesundheit, Brust, Magen, Infektion', PT: 'Saúde geral, tórax, estômago, infecção', RU: 'Общее здоровье, грудь, желудок, инфекции' },
   },
   {
     icon: 'personal_injury',
     label: { EN: 'Orthopedics', JP: '整形外科', ZH: '骨科', 'ZH-T': '骨科', YUE: '骨科', KO: '정형외과', ES: 'Traumatología', FR: 'Orthopédie', IT: 'Ortopedia', TL: 'Orthopedics', ID: 'Ortopedi', DE: 'Orthopädie', PT: 'Ortopedia', RU: 'Ортопедия' },
-    note: { EN: 'Bone, joint, muscle, back pain', ZH: '骨骼、关节、肌肉、腰痛', 'ZH-T': '骨骼、關節、肌肉、腰痛', YUE: '骨骼、關節、肌肉、腰痛', KO: '뼈, 관절, 근육, 허리 통증', ES: 'Hueso, articulación, músculo, dolor de espalda', FR: 'Os, articulation, muscle, mal de dos', IT: 'Osso, articolazione, muscolo, mal di schiena', TL: 'Buto, kasukasuan, kalamnan, sakit sa likod', ID: 'Tulang, sendi, otot, sakit punggung', DE: 'Knochen, Gelenk, Muskel, Rückenschmerzen', PT: 'Osso, articulação, músculo, dor nas costas', RU: 'Кости, суставы, мышцы, боль в спине' },
+    note: { EN: 'Bone, joint, muscle, back pain', JP: '骨・関節・筋肉・腰痛', ZH: '骨骼、关节、肌肉、腰痛', 'ZH-T': '骨骼、關節、肌肉、腰痛', YUE: '骨骼、關節、肌肉、腰痛', KO: '뼈, 관절, 근육, 허리 통증', ES: 'Hueso, articulación, músculo, dolor de espalda', FR: 'Os, articulation, muscle, mal de dos', IT: 'Osso, articolazione, muscolo, mal di schiena', TL: 'Buto, kasukasuan, kalamnan, sakit sa likod', ID: 'Tulang, sendi, otot, sakit punggung', DE: 'Knochen, Gelenk, Muskel, Rückenschmerzen', PT: 'Osso, articulação, músculo, dor nas costas', RU: 'Кости, суставы, мышцы, боль в спине' },
   },
   {
     icon: 'cardiology',
     label: { EN: 'Cardiology', JP: '循環器科', ZH: '心内科', 'ZH-T': '心內科', YUE: '心內科', KO: '순환기내과', ES: 'Cardiología', FR: 'Cardiologie', IT: 'Cardiologia', TL: 'Cardiology', ID: 'Kardiologi', DE: 'Kardiologie', PT: 'Cardiologia', RU: 'Кардиология' },
-    note: { EN: 'Heart, blood pressure', ZH: '心脏、血压', 'ZH-T': '心臟、血壓', YUE: '心臟、血壓', KO: '심장, 혈압', ES: 'Corazón, presión arterial', FR: 'Cœur, tension artérielle', IT: 'Cuore, pressione sanguigna', TL: 'Puso, presyon ng dugo', ID: 'Jantung, tekanan darah', DE: 'Herz, Blutdruck', PT: 'Coração, pressão arterial', RU: 'Сердце, давление' },
+    note: { EN: 'Heart, blood pressure', JP: '心臓・血圧', ZH: '心脏、血压', 'ZH-T': '心臟、血壓', YUE: '心臟、血壓', KO: '심장, 혈압', ES: 'Corazón, presión arterial', FR: 'Cœur, tension artérielle', IT: 'Cuore, pressione sanguigna', TL: 'Puso, presyon ng dugo', ID: 'Jantung, tekanan darah', DE: 'Herz, Blutdruck', PT: 'Coração, pressão arterial', RU: 'Сердце, давление' },
   },
   {
     icon: 'neurology',
     label: { EN: 'Neurology', JP: '神経内科', ZH: '神经内科', 'ZH-T': '神經內科', YUE: '神經內科', KO: '신경내과', ES: 'Neurología', FR: 'Neurologie', IT: 'Neurologia', TL: 'Neurology', ID: 'Neurologi', DE: 'Neurologie', PT: 'Neurologia', RU: 'Неврология' },
-    note: { EN: 'Headache, dizziness, nerve conditions', ZH: '头痛、眩晕、神经疾病', 'ZH-T': '頭痛、眩暈、神經疾病', YUE: '頭痛、眩暈、神經疾病', KO: '두통, 어지럼증, 신경 질환', ES: 'Dolor de cabeza, mareos, condiciones nerviosas', FR: 'Maux de tête, vertiges, maladies nerveuses', IT: 'Mal di testa, vertigini, condizioni nervose', TL: 'Sakit ng ulo, pagkahilo, kondisyon ng nerbiyos', ID: 'Sakit kepala, pusing, kondisi saraf', DE: 'Kopfschmerzen, Schwindel, Nervenerkrankungen', PT: 'Dor de cabeça, tontura, condições nervosas', RU: 'Головная боль, головокружение, нервные расстройства' },
+    note: { EN: 'Headache, dizziness, nerve conditions', JP: '頭痛・めまい・神経疾患', ZH: '头痛、眩晕、神经疾病', 'ZH-T': '頭痛、眩暈、神經疾病', YUE: '頭痛、眩暈、神經疾病', KO: '두통, 어지럼증, 신경 질환', ES: 'Dolor de cabeza, mareos, condiciones nerviosas', FR: 'Maux de tête, vertiges, maladies nerveuses', IT: 'Mal di testa, vertigini, condizioni nervose', TL: 'Sakit ng ulo, pagkahilo, kondisyon ng nerbiyos', ID: 'Sakit kepala, pusing, kondisi saraf', DE: 'Kopfschmerzen, Schwindel, Nervenerkrankungen', PT: 'Dor de cabeça, tontura, condições nervosas', RU: 'Головная боль, головокружение, нервные расстройства' },
   },
   {
     icon: 'dermatology',
     label: { EN: 'Dermatology', JP: '皮膚科', ZH: '皮肤科', 'ZH-T': '皮膚科', YUE: '皮膚科', KO: '피부과', ES: 'Dermatología', FR: 'Dermatologie', IT: 'Dermatologia', TL: 'Dermatology', ID: 'Dermatologi', DE: 'Dermatologie', PT: 'Dermatologia', RU: 'Дерматология' },
-    note: { EN: 'Skin, rash, allergies', ZH: '皮肤、皮疹、过敏', 'ZH-T': '皮膚、皮疹、過敏', YUE: '皮膚、皮疹、過敏', KO: '피부, 발진, 알레르기', ES: 'Piel, sarpullido, alergias', FR: 'Peau, éruption cutanée, allergies', IT: 'Pelle, rash, allergie', TL: 'Balat, pantal, allergy', ID: 'Kulit, ruam, alergi', DE: 'Haut, Ausschlag, Allergien', PT: 'Pele, erupção, alergias', RU: 'Кожа, сыпь, аллергии' },
+    note: { EN: 'Skin, rash, allergies', JP: '皮膚・発疹・アレルギー', ZH: '皮肤、皮疹、过敏', 'ZH-T': '皮膚、皮疹、過敏', YUE: '皮膚、皮疹、過敏', KO: '피부, 발진, 알레르기', ES: 'Piel, sarpullido, alergias', FR: 'Peau, éruption cutanée, allergies', IT: 'Pelle, rash, allergie', TL: 'Balat, pantal, allergy', ID: 'Kulit, ruam, alergi', DE: 'Haut, Ausschlag, Allergien', PT: 'Pele, erupção, alergias', RU: 'Кожа, сыпь, аллергии' },
   },
   {
     icon: 'pregnant_woman',
     label: { EN: 'OB/GYN', JP: '産婦人科', ZH: '妇产科', 'ZH-T': '婦產科', YUE: '婦產科', KO: '산부인과', ES: 'Ginecología/Obstetricia', FR: 'Gynécologie/Obstétrique', IT: 'Ginecologia/Ostetricia', TL: 'OB/GYN', ID: 'Kebidanan/Ginekologi', DE: 'Gynäkologie/Geburtshilfe', PT: 'Ginecologia/Obstetrícia', RU: 'Гинекология/Акушерство' },
-    note: { EN: "Women's health, pregnancy", ZH: '女性健康、孕期', 'ZH-T': '女性健康、孕期', YUE: '女性健康、孕期', KO: '여성 건강, 임신', ES: 'Salud femenina, embarazo', FR: 'Santé féminine, grossesse', IT: 'Salute femminile, gravidanza', TL: 'Kalusugan ng kababaihan, pagbubuntis', ID: 'Kesehatan perempuan, kehamilan', DE: 'Frauengesundheit, Schwangerschaft', PT: 'Saúde feminina, gravidez', RU: 'Женское здоровье, беременность' },
+    note: { EN: "Women's health, pregnancy", JP: '女性の健康・妊娠', ZH: '女性健康、孕期', 'ZH-T': '女性健康、孕期', YUE: '女性健康、孕期', KO: '여성 건강, 임신', ES: 'Salud femenina, embarazo', FR: 'Santé féminine, grossesse', IT: 'Salute femminile, gravidanza', TL: 'Kalusugan ng kababaihan, pagbubuntis', ID: 'Kesehatan perempuan, kehamilan', DE: 'Frauengesundheit, Schwangerschaft', PT: 'Saúde feminina, gravidez', RU: 'Женское здоровье, беременность' },
   },
   {
     icon: 'visibility',
     label: { EN: 'Ophthalmology', JP: '眼科', ZH: '眼科', 'ZH-T': '眼科', YUE: '眼科', KO: '안과', ES: 'Oftalmología', FR: 'Ophtalmologie', IT: 'Oftalmologia', TL: 'Ophthalmology', ID: 'Oftalmologi', DE: 'Ophthalmologie', PT: 'Oftalmologia', RU: 'Офтальмология' },
-    note: { EN: 'Eyes, vision', ZH: '眼睛、视力', 'ZH-T': '眼睛、視力', YUE: '眼睛、視力', KO: '눈, 시력', ES: 'Ojos, visión', FR: 'Yeux, vision', IT: 'Occhi, visione', TL: 'Mga mata, paningin', ID: 'Mata, penglihatan', DE: 'Augen, Sehen', PT: 'Olhos, visão', RU: 'Глаза, зрение' },
+    note: { EN: 'Eyes, vision', JP: '目・視力', ZH: '眼睛、视力', 'ZH-T': '眼睛、視力', YUE: '眼睛、視力', KO: '눈, 시력', ES: 'Ojos, visión', FR: 'Yeux, vision', IT: 'Occhi, visione', TL: 'Mga mata, paningin', ID: 'Mata, penglihatan', DE: 'Augen, Sehen', PT: 'Olhos, visão', RU: 'Глаза, зрение' },
   },
   {
     icon: 'psychology',
     label: { EN: 'Psychiatry', JP: '精神科 / 心療内科', ZH: '精神科 / 心療内科', 'ZH-T': '精神科 / 心療内科', YUE: '精神科 / 心療内科', KO: '정신건강의학과 / 심료내과', ES: 'Psiquiatría', FR: 'Psychiatrie', IT: 'Psichiatria', TL: 'Psychiatry', ID: 'Psikiatri', DE: 'Psychiatrie', PT: 'Psiquiatria', RU: 'Психиатрия' },
-    note: { EN: 'Mental health, stress, depression', ZH: '心理健康、压力、抑郁', 'ZH-T': '心理健康、壓力、抑鬱', YUE: '心理健康、壓力、抑鬱', KO: '정신 건강, 스트레스, 우울증', ES: 'Salud mental, estrés, depresión', FR: 'Santé mentale, stress, dépression', IT: 'Salute mentale, stress, depressione', TL: 'Kalusugang pangkaisipan, stress, depresyon', ID: 'Kesehatan mental, stres, depresi', DE: 'Psychische Gesundheit, Stress, Depression', PT: 'Saúde mental, estresse, depressão', RU: 'Психическое здоровье, стресс, депрессия' },
+    note: { EN: 'Mental health, stress, depression', JP: '精神的健康・ストレス・うつ病', ZH: '心理健康、压力、抑郁', 'ZH-T': '心理健康、壓力、抑鬱', YUE: '心理健康、壓力、抑鬱', KO: '정신 건강, 스트레스, 우울증', ES: 'Salud mental, estrés, depresión', FR: 'Santé mentale, stress, dépression', IT: 'Salute mentale, stress, depressione', TL: 'Kalusugang pangkaisipan, stress, depresyon', ID: 'Kesehatan mental, stres, depresi', DE: 'Psychische Gesundheit, Stress, Depression', PT: 'Saúde mental, estresse, depressão', RU: 'Психическое здоровье, стресс, депрессия' },
   },
 ]
 

@@ -72,6 +72,8 @@ const SHELL_CSS = `
   .lang-btn:hover { background: #f5f5f4; }
   .page-back { display: inline-flex; align-items: center; gap: 4px; color: #5a413d; text-decoration: none; font-size: 13px; margin-bottom: 20px; }
   .page-back:hover { color: #b22620; }
+  :lang(yue), :lang(yue-Hant-HK) { --font-headline: 'Noto Serif HK', 'Noto Serif TC', serif; }
+  .material-symbols-outlined { font-display: block; }
 `
 
 function Shell({ children }: { children: ReactNode }) {
@@ -202,7 +204,11 @@ export default function DashboardShell({ children }: { children: ReactNode }) {
   return (
     <>
       <link
-        href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;700;900&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Work+Sans:wght@400;500;600&family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;700;900&family=Noto+Serif+HK:wght@400;700;900&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Work+Sans:wght@400;500;600&display=swap"
+        rel="stylesheet"
+      />
+      <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=block"
         rel="stylesheet"
       />
       <style dangerouslySetInnerHTML={{ __html: SHELL_CSS }} />

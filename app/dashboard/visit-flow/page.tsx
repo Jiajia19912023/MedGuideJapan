@@ -8,17 +8,17 @@ import { tr, COMMON } from '../translations'
 const ITEM = { href: '/dashboard/visit-flow', title: 'Visit Flow Guide', titleJP: '受診の流れガイド', icon: 'account_tree', color: '#1e1b1c' }
 function tl(m: Record<string,string>, l: string) { return m[l] ?? m['EN'] }
 
-const PAGE_TITLE = { EN: 'Visit Flow Guide', JP: '受診の流れガイド', ZH: '就医流程指南', 'ZH-T': '就醫流程指南', KO: '진료 흐름 안내', ES: 'Guía de Flujo de Visita', FR: 'Guide de Flux de Visite', IT: 'Guida al Flusso della Visita', TL: 'Gabay sa Daloy ng Pagbisita', ID: 'Panduan Alur Kunjungan', DE: 'Besuchsablauf-Leitfaden', PT: 'Guia de Fluxo de Visita', RU: 'Руководство по визиту' }
-const PAGE_SUB  = { EN: 'Step-by-step guide for adults — emergency and non-emergency.', JP: '成人向け緊急・非緊急の受診ステップを図解で解説。', ZH: '成人紧急和非紧急情况的就医步骤图解。', 'ZH-T': '成人緊急和非緊急情況的就醫步驟圖解。', KO: '성인을 위한 응급 및 비응급 진료 단계별 안내.', ES: 'Guía paso a paso para emergencias y visitas rutinarias.', FR: 'Guide étape par étape pour urgences et visites routinières.', IT: 'Guida passo passo per emergenze e visite di routine.', TL: 'Hakbang-hakbang na gabay para sa mga emergensya at karaniwang pagbisita.', ID: 'Panduan langkah demi langkah untuk kedaruratan dan kunjungan rutin.', DE: 'Schritt-für-Schritt für Notfälle und Routinebesuche.', PT: 'Guia passo a passo para emergências e visitas rotineiras.', RU: 'Пошаговое руководство для экстренных и плановых визитов.' }
+const PAGE_TITLE = { EN: 'Visit Flow Guide', JP: '受診の流れガイド', ZH: '就医流程指南', 'ZH-T': '就醫流程指南', KO: '진료 흐름 안내', ES: 'Guía de Flujo de Visita', FR: 'Guide de Flux de Visite', IT: 'Guida al Flusso della Visita', TL: 'Gabay sa Daloy ng Pagbisita', ID: 'Panduan Alur Kunjungan', DE: 'Besuchsablauf-Leitfaden', PT: 'Guia de Fluxo de Visita', RU: 'Руководство по визиту', YUE: '就醫流程指南' }
+const PAGE_SUB  = { EN: 'Step-by-step guide for adults — emergency and non-emergency.', JP: '成人向け緊急・非緊急の受診ステップを図解で解説。', ZH: '成人紧急和非紧急情况的就医步骤图解。', 'ZH-T': '成人緊急和非緊急情況的就醫步驟圖解。', KO: '성인을 위한 응급 및 비응급 진료 단계별 안내.', ES: 'Guía paso a paso para emergencias y visitas rutinarias.', FR: 'Guide étape par étape pour urgences et visites routinières.', IT: 'Guida passo passo per emergenze e visite di routine.', TL: 'Hakbang-hakbang na gabay para sa mga emergensya at karaniwang pagbisita.', ID: 'Panduan langkah demi langkah untuk kedaruratan dan kunjungan rutin.', DE: 'Schritt-für-Schritt für Notfälle und Routinebesuche.', PT: 'Guia passo a passo para emergências e visitas rotineiras.', RU: 'Пошаговое руководство для экстренных и плановых визитов.', YUE: '成人緊急及非緊急情況嘅就醫步驟圖解。' }
 
-const BTN_ROUTINE   = { EN: 'Routine Visit', JP: '通常受診', ZH: '普通就诊', 'ZH-T': '普通就診', KO: '일반 진료', ES: 'Visita Rutinaria', FR: 'Visite Routinière', IT: 'Visita di Routine', TL: 'Karaniwang Pagbisita', ID: 'Kunjungan Rutin', DE: 'Routinebesuch', PT: 'Visita Rotineira', RU: 'Плановый визит' }
-const BTN_EMERGENCY = { EN: 'Emergency', JP: '緊急時', ZH: '紧急情况', 'ZH-T': '緊急情況', KO: '응급 상황', ES: 'Emergencia', FR: 'Urgence', IT: 'Emergenza', TL: 'Emerhensya', ID: 'Darurat', DE: 'Notfall', PT: 'Emergência', RU: 'Экстренно' }
-const WARN_119 = { EN: 'If life is at risk, call 119 immediately. Do not take time to read this guide.', JP: '命の危険がある場合はすぐに119番に電話してください。このガイドを読む時間はありません。', ZH: '如有生命危险，请立即拨打119。不要浪费时间阅读此指南。', 'ZH-T': '如有生命危險，請立即撥打119。不要浪費時間閱讀此指南。', KO: '생명이 위험한 경우 즉시 119에 전화하세요. 이 가이드를 읽을 시간이 없습니다.', ES: 'Si hay peligro de vida, llame al 119 inmediatamente.', FR: 'Si la vie est en danger, appelez le 119 immédiatement.', IT: 'Se c\'è pericolo di vita, chiama il 119 immediatamente.', TL: 'Kung may banta sa buhay, tumawag agad sa 119.', ID: 'Jika jiwa terancam, hubungi 119 segera.', DE: 'Lebensgefahr: Sofort 119 anrufen.', PT: 'Se há risco de vida, ligue 119 imediatamente.', RU: 'При угрозе жизни — немедленно звоните 119.' }
-const H_NOTSURE = { EN: 'Not sure which path?', JP: '緊急か通常か判断に迷ったら？', ZH: '不确定该怎么做？', 'ZH-T': '不確定該怎麼做？', KO: '어떻게 해야 할지 모르겠다면?', ES: '¿No estás seguro del camino?', FR: 'Pas sûr de la voie à suivre?', IT: 'Non sei sicuro della strada?', TL: 'Hindi sigurado kung anong landas?', ID: 'Tidak yakin harus ke mana?', DE: 'Nicht sicher welchen Weg?', PT: 'Não sabe qual caminho?', RU: 'Не уверены, что выбрать?' }
-const LBL_STEP = { EN: 'Step', JP: 'ステップ', ZH: '步骤', 'ZH-T': '步驟', KO: '단계', ES: 'Paso', FR: 'Étape', IT: 'Passaggio', TL: 'Hakbang', ID: 'Langkah', DE: 'Schritt', PT: 'Passo', RU: 'Шаг' }
-const LBL_DECISION = { EN: 'Decision', JP: '判断', ZH: '判断', 'ZH-T': '判斷', KO: '판단', ES: 'Decisión', FR: 'Décision', IT: 'Decisione', TL: 'Desisyon', ID: 'Keputusan', DE: 'Entscheidung', PT: 'Decisão', RU: 'Решение' }
-const LBL_HEALTH_CHECK = { EN: 'Use the Health Check Tool', JP: '健康チェックツールを使う', ZH: '使用健康检查工具', 'ZH-T': '使用健康檢查工具', KO: '건강 체크 도구 사용', ES: 'Usar la herramienta de chequeo', FR: 'Utiliser l\'outil de bilan santé', IT: 'Usa lo strumento di controllo salute', TL: 'Gamitin ang Health Check Tool', ID: 'Gunakan Alat Pemeriksaan Kesehatan', DE: 'Gesundheitscheck-Tool nutzen', PT: 'Usar a ferramenta de verificação de saúde', RU: 'Использовать инструмент проверки здоровья' }
-const LBL_PHRASES = { EN: 'See Medical Japanese Phrases', JP: '医療日本語フレーズ集を見る', ZH: '查看医疗日语短语集', 'ZH-T': '查看醫療日語短語集', KO: '의료 일본어 표현집 보기', ES: 'Ver frases médicas en japonés', FR: 'Voir les phrases médicales japonaises', IT: 'Vedi le frasi mediche in giapponese', TL: 'Tingnan ang Medical Japanese Phrases', ID: 'Lihat Frasa Medis Bahasa Jepang', DE: 'Medizinische japanische Phrasen ansehen', PT: 'Ver frases médicas em japonês', RU: 'Посмотреть медицинские фразы на японском' }
+const BTN_ROUTINE   = { EN: 'Routine Visit', JP: '通常受診', ZH: '普通就诊', 'ZH-T': '普通就診', KO: '일반 진료', ES: 'Visita Rutinaria', FR: 'Visite Routinière', IT: 'Visita di Routine', TL: 'Karaniwang Pagbisita', ID: 'Kunjungan Rutin', DE: 'Routinebesuch', PT: 'Visita Rotineira', RU: 'Плановый визит', YUE: '普通就診' }
+const BTN_EMERGENCY = { EN: 'Emergency', JP: '緊急時', ZH: '紧急情况', 'ZH-T': '緊急情況', KO: '응급 상황', ES: 'Emergencia', FR: 'Urgence', IT: 'Emergenza', TL: 'Emerhensya', ID: 'Darurat', DE: 'Notfall', PT: 'Emergência', RU: 'Экстренно', YUE: '緊急情況' }
+const WARN_119 = { EN: 'If life is at risk, call 119 immediately. Do not take time to read this guide.', JP: '命の危険がある場合はすぐに119番に電話してください。このガイドを読む時間はありません。', ZH: '如有生命危险，请立即拨打119。不要浪费时间阅读此指南。', 'ZH-T': '如有生命危險，請立即撥打119。不要浪費時間閱讀此指南。', KO: '생명이 위험한 경우 즉시 119에 전화하세요. 이 가이드를 읽을 시간이 없습니다.', ES: 'Si hay peligro de vida, llame al 119 inmediatamente.', FR: 'Si la vie est en danger, appelez le 119 immédiatement.', IT: 'Se c\'è pericolo di vita, chiama il 119 immediatamente.', TL: 'Kung may banta sa buhay, tumawag agad sa 119.', ID: 'Jika jiwa terancam, hubungi 119 segera.', DE: 'Lebensgefahr: Sofort 119 anrufen.', PT: 'Se há risco de vida, ligue 119 imediatamente.', RU: 'При угрозе жизни — немедленно звоните 119.', YUE: '如有生命危險，請立即撥打119。唔好浪費時間睇呢個指南。' }
+const H_NOTSURE = { EN: 'Not sure which path?', JP: '緊急か通常か判断に迷ったら？', ZH: '不确定该怎么做？', 'ZH-T': '不確定該怎麼做？', KO: '어떻게 해야 할지 모르겠다면?', ES: '¿No estás seguro del camino?', FR: 'Pas sûr de la voie à suivre?', IT: 'Non sei sicuro della strada?', TL: 'Hindi sigurado kung anong landas?', ID: 'Tidak yakin harus ke mana?', DE: 'Nicht sicher welchen Weg?', PT: 'Não sabe qual caminho?', RU: 'Не уверены, что выбрать?', YUE: '唔確定應該點做？' }
+const LBL_STEP = { EN: 'Step', JP: 'ステップ', ZH: '步骤', 'ZH-T': '步驟', KO: '단계', ES: 'Paso', FR: 'Étape', IT: 'Passaggio', TL: 'Hakbang', ID: 'Langkah', DE: 'Schritt', PT: 'Passo', RU: 'Шаг', YUE: '步驟' }
+const LBL_DECISION = { EN: 'Decision', JP: '判断', ZH: '判断', 'ZH-T': '判斷', KO: '판단', ES: 'Decisión', FR: 'Décision', IT: 'Decisione', TL: 'Desisyon', ID: 'Keputusan', DE: 'Entscheidung', PT: 'Decisão', RU: 'Решение', YUE: '判斷' }
+const LBL_HEALTH_CHECK = { EN: 'Use the Health Check Tool', JP: '健康チェックツールを使う', ZH: '使用健康检查工具', 'ZH-T': '使用健康檢查工具', KO: '건강 체크 도구 사용', ES: 'Usar la herramienta de chequeo', FR: 'Utiliser l\'outil de bilan santé', IT: 'Usa lo strumento di controllo salute', TL: 'Gamitin ang Health Check Tool', ID: 'Gunakan Alat Pemeriksaan Kesehatan', DE: 'Gesundheitscheck-Tool nutzen', PT: 'Usar a ferramenta de verificação de saúde', RU: 'Использовать инструмент проверки здоровья', YUE: '使用健康檢查工具' }
+const LBL_PHRASES = { EN: 'See Medical Japanese Phrases', JP: '医療日本語フレーズ集を見る', ZH: '查看医疗日语短语集', 'ZH-T': '查看醫療日語短語集', KO: '의료 일본어 표현집 보기', ES: 'Ver frases médicas en japonés', FR: 'Voir les phrases médicales japonaises', IT: 'Vedi le frasi mediche in giapponese', TL: 'Tingnan ang Medical Japanese Phrases', ID: 'Lihat Frasa Medis Bahasa Jepang', DE: 'Medizinische japanische Phrasen ansehen', PT: 'Ver frases médicas em japonês', RU: 'Посмотреть медицинские фразы на японском', YUE: '查看醫療日語短語集' }
 
 type FlowType = 'emergency' | 'non-emergency'
 
@@ -126,6 +126,14 @@ const EMERGENCY_STEPS: Record<string, { step: number; icon: string; color: strin
     { step: 4, icon: 'local_hospital', color: '#206777', title: 'Приёмный покой (救急外来)', desc: 'Скорая доставит вас в ближайшую больницу, способную оказать помощь. Выбрать больницу самостоятельно нельзя.' },
     { step: 5, icon: 'medical_services', color: '#206777', title: 'Сортировка и лечение', desc: 'Медсестра оценивает тяжесть состояния (Уровень 1–5). Жизнеугрожающие случаи лечат немедленно. Не критические — могут ждать после первичной оценки.' },
     { step: 6, icon: 'payments', color: '#374151', title: 'Оплата', desc: 'Оплата при выписке. С NHI: 30% доплата + экстренная надбавка (¥5 000–¥10 000). Без страховки: полная стоимость. Крупные больницы принимают кредитные карты.' },
+  ],
+  YUE: [
+    { step: 1, icon: 'priority_high', color: '#b22620', title: '有生命危險嗎？', desc: '失去意識、停止呼吸、大量出血、疑似中風或心臟病發作、重大創傷。', action: '係 → 繼續以下步驟', isDecision: true },
+    { step: 2, icon: 'call', color: '#b22620', title: '撥打119', desc: '講：「救急です（Kyūkyū desu）」，提供地址，保持通話，調度員會指導你。', note: '日本救護車出動免費（之後嘅醫療費用另計）。' },
+    { step: 3, icon: 'door_front', color: '#7a5700', title: '等待救護車期間', desc: '保持患者安靜同溫暖。唔好俾食物或飲水。打開門鎖。準備好保險卡同正在服用嘅藥物。' },
+    { step: 4, icon: 'local_hospital', color: '#206777', title: '到達急診室（救急外来）', desc: '救護車會將你送往能夠處理相關情況嘅最近醫院。唔可以自行選擇醫院。' },
+    { step: 5, icon: 'medical_services', color: '#206777', title: '分診與治療', desc: '分診護士評估病情嚴重程度（1至5級）。危及生命嘅情況會即時處理。初步評估後非緊急患者可能需要等候。' },
+    { step: 6, icon: 'payments', color: '#374151', title: '費用支付', desc: '出院時支付。持NHI：30%自付+急救附加費（¥5,000–¥10,000）。無保險：全額自付。大型醫院接受信用卡。' },
   ],
 }
 
@@ -260,6 +268,16 @@ const ROUTINE_STEPS: Record<string, { step: number; icon: string; color: string;
     { step: 7, icon: 'local_pharmacy', color: '#7a5700', title: 'Получите рецепт (処方箋)', desc: 'Отнесите 処方箋 в любую аптеку (薬局). Действителен только 4 дня. С NHI лекарства стоят ¥200–¥1 500.' },
     { step: 8, icon: 'payments', color: '#374151', title: 'Оплата в клинике', desc: 'Оплатите долю (30% с NHI) на кассе. Типичный визит: ¥1 000–¥3 000 со страховкой.' },
   ],
+  YUE: [
+    { step: 1, icon: 'help', color: '#206777', title: '確認症狀', desc: '發燒、感冒、疼痛、皮疹或慢性病？唔確定時可使用健康檢查工具，或查詢哪個科室處理你嘅症狀。' },
+    { step: 2, icon: 'store_mall_directory', color: '#206777', title: '搵附近診所（クリニック）', desc: '喺Google地圖搜索「内科 near me」或用日語搜索症狀。唔需要轉診或登記，可以直接前往。', note: '大多數診所9點開診，建議早到以減少等候時間。' },
+    { step: 3, icon: 'fact_check', color: '#7a5700', title: '準備攜帶物品', desc: '保險卡（保険証）、現金¥3,000–¥10,000、正在服用嘅藥物清單（薬リスト），以及本應用嘅準備清單。' },
+    { step: 4, icon: 'door_front', color: '#7a5700', title: '喺前台（受付）辦理手續', desc: '出示保險卡，填寫列有症狀同病史嘅問診表（問診票）。許多診所提供英語或多語言表格。' },
+    { step: 5, icon: 'chair', color: '#374151', title: '等候叫號', desc: '會按姓名或號碼叫診。等候時間：小診所15至60分鐘，醫院1至3小時。' },
+    { step: 6, icon: 'stethoscope', color: '#206777', title: '接受診察', desc: '描述你嘅症狀。如需要可使用短語集。醫生可能會安排檢查、給出診斷、開具處方或轉診信。' },
+    { step: 7, icon: 'local_pharmacy', color: '#7a5700', title: '領取處方單（処方箋）', desc: '持処方箋前往任意藥局取藥，有效期僅4天。持NHI時藥費約¥200–¥1,500。' },
+    { step: 8, icon: 'payments', color: '#374151', title: '喺診所付款', desc: '診察結束後喺窗口付款。持NHI時普通就診總費用約¥1,000–¥3,000。' },
+  ],
 }
 
 const NOT_SURE: Record<string, { q: string; a: string }[]> = {
@@ -366,6 +384,14 @@ const NOT_SURE: Record<string, { q: string; a: string }[]> = {
     { q: 'Ребёнок до 1 года с высокой температурой', a: '→ Звоните #8000 (консультация педиатра)' },
     { q: 'Не уверены, ехать ли в скорую ночью', a: '→ Звоните #7119 для консультации' },
     { q: 'Температура, простуда, лёгкая боль в животе, сыпь', a: '→ Клиника на следующее утро' },
+  ],
+  YUE: [
+    { q: '嚴重胸痛或呼吸困難', a: '→ 緊急：撥打119' },
+    { q: '突然意識模糊、面部下垂或單側無力', a: '→ 緊急：撥打119（可能係中風）' },
+    { q: '高燒伴頸部僵硬或皮疹', a: '→ 緊急：撥打119' },
+    { q: '1歲以下嬰兒高燒', a: '→ 撥打 #8000（小兒急救電話諮詢）' },
+    { q: '唔確定夜間係咪需要去急診', a: '→ 撥打 #7119 獲取指導' },
+    { q: '發燒、感冒、輕度腹痛、皮疹', a: '→ 翌日上午前往診所就診' },
   ],
 }
 

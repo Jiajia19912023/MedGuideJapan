@@ -79,6 +79,10 @@
   --color-indigo-100: #e0e7ff;
 }
 
+:lang(yue), :lang(yue-Hant-HK) {
+  --font-headline: 'Noto Serif HK', 'Noto Serif TC', serif;
+}
+
 * {
   margin: 0;
   padding: 0;
