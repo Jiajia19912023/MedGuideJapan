@@ -1,4 +1,5 @@
 ﻿import type { Metadata, Viewport } from 'next';
+import { GoogleAnalytics } from '@next/third-parties/google';
 import './globals.css';
 
 export const metadata: Metadata = {
@@ -21,6 +22,7 @@ export default function RootLayout({
       <body className="antialiased bg-slate-100">
         {children}
       </body>
+      <GoogleAnalytics gaId="G-MTQRY0LD3N" />
     </html>
   );
 }
